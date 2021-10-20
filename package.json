@@ -1,0 +1,26 @@
+{
+  "name": "car-rent-task",
+  "version": "1.0.0",
+  "description": "QA Cypress Automation Task",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kudziadawid/car-rent-task.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kudziadawid/car-rent-task/issues"
+  },
+  "homepage": "https://github.com/kudziadawid/car-rent-task#readme",
+  "devDependencies": {
+    "cypress": "^8.6.0",
+    "cypress-cucumber-preprocessor": "^4.3.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
+  }
+}
