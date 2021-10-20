@@ -31,3 +31,7 @@ When('the user clicks on {string} element with {string} {string} class name', (e
 When('the user clicks on Rent button for {string}', (itemValue) => {
     cy.get('#search-results').find('tr').contains(new RegExp('^' + itemValue + '$', 'g')).parent().find('td').last().click()
 })
+
+Then('verify that {string} text is displayed', (textValue) => {
+    cy.get('body').should('contain.text', textValue)
+})
