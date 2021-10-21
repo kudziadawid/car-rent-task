@@ -32,8 +32,8 @@ When('the user clicks on Rent button for {string}', (itemValue) => {
     cy.get('#search-results').find('tr').contains(new RegExp('^' + itemValue + '$', 'g')).parent().find('td').last().click()
 })
 
-When('the user clicks on Rent button for company {string}, model {string}, licence plate {string} and price per day {string}', (company, model, licencePlate, pricePerDay) => {
-    cy.get('#search-results').find('tr').contains(new RegExp('^' + licencePlate + '$', 'g')).parent().find('td').last().click()
+When('the user clicks on Rent button for company {string}, model {string}, license plate {string} and price per day {string}', (company, model, licensePlate, pricePerDay) => {
+    cy.get('#search-results').find('tr').contains(new RegExp('^' + licensePlate + '$', 'g')).parent().find('td').last().click()
 })
 
 Then('verify that {string} text is displayed', (textValue) => {
