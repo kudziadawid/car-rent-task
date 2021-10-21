@@ -51,20 +51,19 @@ Feature: Car Rent
         And the user types '<pickup>' into 'Pickup' text field
         And the user types '<dropoff>' into 'DropOff' text field
         And the user clicks on 'Search' button
-        And the user clicks on Rent button for company '<company>', model '<model>', licence plate '<licencePlate>' and price per day '<pricePerDay>'
+        And the user clicks on Rent button for company '<company>', model '<model>', license plate '<licensePlate>' and price per day '<pricePerDay>'
         Then verify that '<model>' text is displayed
         And verify that 'Company: <company>' text is displayed
         And verify that 'Price per day: <pricePerDay>' text is displayed
         #the step below may fail because of one of bugs, submitted
         And verify that 'Location: <country>, <city>' text is displayed
-        #it should be 'licence plate' but there is a bug, submitted
-        And verify that 'License plate: <licencePlate>' text is displayed
+        And verify that 'License plate: <licensePlate>' text is displayed
         And verify that 'Pickup date: <pickup>' text is displayed
         And verify that 'Dropoff date: <dropoff>' text is displayed
         And verify that 'Rent!' text on 'class' button is displayed
 
         Examples:
-            | country | city   | model         | pickup     | dropoff    | company          | licencePlate | pricePerDay |
+            | country | city   | model         | pickup     | dropoff    | company          | licensePlate | pricePerDay |
             | Poland  | Cracow | Skoda Octavia | 2020-10-10 | 2020-11-11 | Davis-Garcia     | 1C403        | 65$         |
             | France  | Paris  | Toyota RAV4   | 2020-11-11 | 2022-03-03 | Rodriguez-Fisher | CJW-2174     | 107$        |
 
