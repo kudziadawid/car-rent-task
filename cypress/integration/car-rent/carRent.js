@@ -32,6 +32,37 @@ When('the user clicks on Rent button for {string}', (itemValue) => {
     cy.get('#search-results').find('tr').contains(new RegExp('^' + itemValue + '$', 'g')).parent().find('td').last().click()
 })
 
+When('the user clicks on Rent button for company {string}, model {string}, licence plate {string} and price per day {string}', (company, model, licencePlate, pricePerDay) => {
+    cy.get('#search-results').find('tr').contains(new RegExp('^' + licencePlate + '$', 'g')).parent().find('td').last().click()
+})
+
 Then('verify that {string} text is displayed', (textValue) => {
     cy.get('body').should('contain.text', textValue)
+})
+
+Then ('verify the price is product of price per day multiplied by number of days from {string} to {string} for {string}', (pickupDate, dropoffDate, itemValue) => {
+    let daysDifference = Math.floor((Date.parse(dropoffDate) - Date.parse(pickupDate)) / 86400000)
+    cy.get('#search-results').find('tr').contains(new RegExp('^' + itemValue + '$', 'g')).parent().find('td').eq(4).invoke('text').then(pricePerDay => {
+        pricePerDay = pricePerDay.replace(/\D/g,'')
+        cy.get('#search-results').find('tr').contains(new RegExp('^' + itemValue + '$', 'g')).parent().find('td').eq(3).invoke('text').then(priceOverall => {
+            priceOverall = priceOverall.replace(/\D/g,'')
+            expect(priceOverall).to.equal((pricePerDay*daysDifference).toString())
+        })
+    })
+})
+
+Then('verify that {string} text on {string} button is displayed', (textValue, buttonType) => {
+    switch(buttonType) {
+        case 'tag name': 
+            cy.get('button').contains(textValue).invoke('text').then(buttonText => {
+                expect(buttonText).to.equal(textValue)
+            }) 
+            break
+        case 'class':
+            cy.get('.btn').contains(textValue).invoke('text').then(buttonText => {
+                expect(buttonText).to.equal(textValue)
+            }) 
+            break
+            default: throw new Error('Second string accepts only "tag name" or "class" value') 
+    }
 })
